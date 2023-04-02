@@ -1,0 +1,4 @@
+is_global = true
+build_property.RefitInternalNamespace = ApiConsultarVacinas
+build_property.RootNamespace = ApiConsultarVacinas
+build_property.ProjectDir = C:\Users\Rafael\source\repos\ApiConsultarVacinas\ApiConsultarVacinas\

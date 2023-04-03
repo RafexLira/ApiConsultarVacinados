@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace ApiConsultarVacinas.Services
 {
-    public class ApiCampanhaServices
+    public class ApiCampanhaServices : IApiCampanhaServices
     {
         private IConfiguration _configuration;
         private VacinadosCovidResponse responseApi;             
 
         //Falta configurar injeção
-        private ApiCampanhaServices(IConfiguration configuration)
+        public ApiCampanhaServices(IConfiguration configuration)
         {
             _configuration = configuration;
         }      
@@ -50,7 +50,7 @@ namespace ApiConsultarVacinas.Services
             return response;
         }
 
-        private async Task<VacinadosCovidResponse> GetService(string url, string credentials, string fromBody)
+        public async Task<VacinadosCovidResponse> GetService(string url, string credentials, string fromBody)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace ApiConsultarVacinas.Services
                 {
                     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", credentials);
 
-                    httpClient.DefaultRequestHeaders.Add("User-Agent", "ApiConsultarVacinas");
+                    httpClient.DefaultRequestHeaders.Add("User-Agent", "PostmanRuntime/7.31.3");
 
                     var httpContent = new StringContent(fromBody, Encoding.UTF8, "application/json");
 
@@ -77,14 +77,14 @@ namespace ApiConsultarVacinas.Services
             }
             catch (Exception e)
             {
-
+               
             }
             return responseApi;
         }
         public string Credential()
-        {
-            return Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_configuration["Authorization.UserName"]}:{_configuration["Authorization.Password"]}"));
+        {           
+            return Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_configuration["_User"]}:{_configuration["_Password"]}"));       
         }
-
+       
     }
 }

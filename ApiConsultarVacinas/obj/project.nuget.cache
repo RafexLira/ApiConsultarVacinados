@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Ee8ygRP3oeaUfDnYTy/W5+UfVKJERPLNuX4psMmlyGyV18BtnzfQ0jwcR5VNc2cq9d1YEQKCKu941aTP+qVVLg==",
+  "dgSpecHash": "FvE1kholOzeEVGQVLQ34Z+U2w8CEso5AVk1X4g6bvAN37x+mN+9EZYIASp4gUHIeEOPJmTh3ZdHYlJYepcpPkg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rafael\\source\\repos\\ApiConsultarVacinas\\ApiConsultarVacinas\\ApiConsultarVacinas.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.32\\microsoft.extensions.dependencyinjection.3.1.32.nupkg.sha512",
+    "C:\\Users\\Rafael\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.32\\microsoft.extensions.dependencyinjection.abstractions.3.1.32.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\refit\\6.3.2\\refit.6.3.2.nupkg.sha512",
     "C:\\Users\\Rafael\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",

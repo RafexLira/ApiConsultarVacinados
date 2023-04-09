@@ -1,10 +1,12 @@
-﻿namespace ApiConsultarVacinas.Model
+﻿using ApiConsultarVacinas.Model;
+
+namespace ApiConsultarVacinas.Response
 {
-    public class DadosVacina
+    public class CampanhaVacinaResponse
     {
-        public int Id { get; set; }      
-        public string HitId { get; set; }      
-        public string PacienteId { get; set; }  
+        public int Id { get; set; }
+        public string PacienteId { get; set; }            
+        public string HitId { get; set; }
         public string DataSolicitacao { get; set; }
         public string DataAplicacao { get; set; }
         public string Descricao { get; set; }

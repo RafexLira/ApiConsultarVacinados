@@ -1,5 +1,6 @@
 ﻿using ApiConsultarVacinas.JsonResponse;
 using ApiConsultarVacinas.Model;
+using ApiConsultarVacinas.Request;
 using ApiConsultarVacinas.Response;
 using ApiConsultarVacinas.Services;
 using Microsoft.AspNetCore.Http;
@@ -36,10 +37,11 @@ namespace ApiConsultarVacinas.Controllers
         }
 
         [HttpPost]
-        [Route("Scroll")]
-        public async Task<List<Scroll>> SearchScroll(string nome, string cpf)
+        [Route("scroll")]
+        public async Task<List<Scroll>> SearchScroll([FromBody] CampanhaVacinaRequest request)
         {
-            return await _api.SearchScroll();
+            var scrollId = request.ScrollId;
+            return await _api.SearchScroll(scrollId);
         }
     }
 }

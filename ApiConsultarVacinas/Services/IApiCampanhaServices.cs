@@ -10,8 +10,8 @@ namespace ApiConsultarVacinas.Services
     {
         Task<List<Scroll>> SearchDefault();
         Task<List<Scroll>> SearchM();
-        Task<List<Scroll>> SearchScroll();
-        Task<List<Scroll>> GetService(string url, string credentials, string fromBody);
+        Task<List<Scroll>> SearchScroll(string scrollId);
+        Task<List<Scroll>> PostService(string url, string credentials, string fromBody);
         string Credential();
     }
 }

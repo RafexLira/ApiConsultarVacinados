@@ -1,6 +1,10 @@
-﻿using ApiConsultarVacinas.JsonResponse;
+﻿using ApiConsultarVacinas.Context;
+using ApiConsultarVacinas.JsonResponse;
 using ApiConsultarVacinas.Model;
+using ApiConsultarVacinas.Repositories;
 using ApiConsultarVacinas.Response;
+using ApiConsultarVacinas.UnitWork;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -21,11 +25,15 @@ namespace ApiConsultarVacinas.Services
         private List<CampanhaVacinaResponse> campanhaVacinaResponses = new List<CampanhaVacinaResponse>();
         private List<DadosVacina> DadosVacinas = new List<DadosVacina>();
         private List<Scroll> Scrolls = new List<Scroll>();
-
-        //Falta configurar injeção
-        public ApiCampanhaServices(IConfiguration configuration)
+        private IUnitOfWorks _UnitOfWorks;
+        private VacinaContext _context;
+        private IDadosVacinaRepository _dadosVacinaRepository;       
+       
+        public ApiCampanhaServices(IConfiguration configuration, IUnitOfWorks UnitOfWorks, IDadosVacinaRepository dadosVacinaRepository)
         {
             _configuration = configuration;
+            _UnitOfWorks = UnitOfWorks;
+            _dadosVacinaRepository = dadosVacinaRepository;            
         }
 
         public async Task<List<Scroll>> SearchDefault()
@@ -46,7 +54,7 @@ namespace ApiConsultarVacinas.Services
         }
 
         public async Task<List<Scroll>> SearchScroll(string scrollId)
-        {           // restamos tendo um 400 ao realizar a requisição
+        {           
             var url = _configuration["Uri3"];
 
             var conteudo = "{\"scroll_id\":\"" + scrollId+"\","+" \"scroll\":\"1m\"}";       
@@ -94,7 +102,8 @@ namespace ApiConsultarVacinas.Services
                                 Descricao = "Relatório Vacinas Pfizer aplicadas no RJ em: " + hit.Source.VacinaDataAplicacao
                             };
 
-                            DadosVacinas.Add(vacina);
+                            _dadosVacinaRepository.Add(vacina);                           
+                            _UnitOfWorks.Commit();
                             campanhaVacinaResponses.Add(vacinaResponse);
                         }
 

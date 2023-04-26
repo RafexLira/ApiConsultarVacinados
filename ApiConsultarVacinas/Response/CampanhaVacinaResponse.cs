@@ -11,6 +11,6 @@ namespace ApiConsultarVacinas.Response
         public string DataAplicacao { get; set; }
         public string Descricao { get; set; }
         public double QtdTotalVacinados { get; set; }
-        public Solicitante Solicitante { get; set; }
+        public string NomeSolicitante { get; set; }
     }
 }

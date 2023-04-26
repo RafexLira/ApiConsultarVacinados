@@ -71,8 +71,8 @@ namespace ApiConsultarVacinas.Migrations
 
             modelBuilder.Entity("ApiConsultarVacinas.Model.DadosVacina", b =>
                 {
-                    b.HasOne("ApiConsultarVacinas.Model.Solicitante", "Solicitante")
-                        .WithMany()
+                    b.HasOne("ApiConsultarVacinas.Model.Solicitante", null)
+                        .WithMany("DadosVacina")
                         .HasForeignKey("SolicitanteId");
                 });
 #pragma warning restore 612, 618

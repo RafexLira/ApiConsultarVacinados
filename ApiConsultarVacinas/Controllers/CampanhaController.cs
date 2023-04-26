@@ -15,33 +15,54 @@ namespace ApiConsultarVacinas.Controllers
     public class CampanhaController : ControllerBase
     {
         //resolver questões de injeção
-        private readonly IApiCampanhaServices _api;
+        private readonly IApiCampanhaServices _apiService;
 
         public CampanhaController(IApiCampanhaServices api)
         {
-            _api = api;
+            _apiService = api;
         }
 
         [HttpGet]
         [Route("default")]
-        public async Task<List<Scroll>> GetSearchDefault(string nome, string cpf)
+        public async Task<List<Scroll>> GetSearchDefault([FromBody] CampanhaVacinaRequest request)
         {
-            return await _api.SearchDefault();
+            var solicitante = new Solicitante()
+            {
+                Nome = request.Nome,
+                CPF = request.Cpf
+            };
+            return await _apiService.SearchDefault(solicitante);
         }
 
         [HttpPost]
         [Route("searchM")]
-        public async Task<List<Scroll>> SearchM(string nome, string cpf)
+        public async Task<List<Scroll>> SearchM([FromBody] CampanhaVacinaRequest request)
         {
-            return await _api.SearchM();
+            var solicitante = new Solicitante()
+            {
+                Nome = request.Nome,
+                CPF = request.Cpf
+            };
+            return await _apiService.SearchM(solicitante);
         }
 
         [HttpPost]
         [Route("scroll")]
         public async Task<List<Scroll>> SearchScroll([FromBody] CampanhaVacinaRequest request)
         {
-            var scrollId = request.ScrollId;
-            return await _api.SearchScroll(scrollId);
+            var solicitante = new Solicitante()
+            {
+                Nome = request.Nome,
+                CPF = request.Cpf
+            };
+            return await _apiService.SearchScroll(request.ScrollId, solicitante);
+        }
+
+        [HttpPost]
+        [Route("CPF")]
+        public string CPF([FromBody] CampanhaVacinaRequest request)
+        {
+            return _apiService.CPF(request.Cpf);
         }
     }
 }

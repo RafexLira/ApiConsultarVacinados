@@ -1,5 +1,8 @@
 ﻿using ApiConsultarVacinas.Context;
+using ApiConsultarVacinas.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ApiConsultarVacinas.Repositories
 {
@@ -14,22 +17,37 @@ namespace ApiConsultarVacinas.Repositories
         {
             throw new System.NotImplementedException();
         }
-
-        public void Find(int id)
+        public string FindCpf(string cpf)
         {
-            throw new System.NotImplementedException();
-        }
+            var Solicitante = _context.Solicitantes;
 
-        public void FindAll()
+            foreach (var solicitante in Solicitante)
+            {
+                if (solicitante.CPF == cpf)
+                {
+                    return solicitante.CPF;
+                }
+            }
+            return "";
+        }       
+        public void Add(Solicitante solicitante)
         {
-            throw new System.NotImplementedException();
+            if (!SolicitanteExist(solicitante.CPF))
+            {
+                _context.Solicitantes.Add(solicitante);
+            }           
         }
 
-        public void Save()
-        {          
-            throw new System.NotImplementedException();
-        }
+        public bool SolicitanteExist(string cpf)
+        {
+            var retornoCpf = FindCpf(cpf);
 
+            if (retornoCpf != "")
+            {
+                return true;
+            }
+            return false;
+        }
         public void Update(int id)
         {
             throw new System.NotImplementedException();

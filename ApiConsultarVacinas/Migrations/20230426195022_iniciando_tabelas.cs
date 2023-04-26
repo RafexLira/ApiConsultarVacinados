@@ -2,7 +2,7 @@
 
 namespace ApiConsultarVacinas.Migrations
 {
-    public partial class NovaTabela : Migration
+    public partial class iniciando_tabelas : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -8,10 +8,11 @@ namespace ApiConsultarVacinas.Services
 {
     public interface IApiCampanhaServices
     {
-        Task<List<Scroll>> SearchDefault();
-        Task<List<Scroll>> SearchM();
-        Task<List<Scroll>> SearchScroll(string scrollId);
-        Task<List<Scroll>> PostService(string url, string credentials, string fromBody);
+        Task<List<Scroll>> SearchDefault(Solicitante solicitante);
+        Task<List<Scroll>> SearchM(Solicitante solicitante);
+        Task<List<Scroll>> SearchScroll(string scrollId, Solicitante solicitante);
+        Task<List<Scroll>> ServiceResponse(string url, string credentials, string fromBody, Solicitante solicitante);
         string Credential();
+        string CPF(string cpf);
     }
 }

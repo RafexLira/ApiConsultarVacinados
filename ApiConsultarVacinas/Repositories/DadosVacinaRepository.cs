@@ -18,27 +18,41 @@ namespace ApiConsultarVacinas.Repositories
 
         public void Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var dadosVacinaId = _context.DadosVacinas.Find(id);
+            _context.DadosVacinas.Remove(dadosVacinaId);
         }
 
-        public void Find(int id)
+        public DbSet<DadosVacina> Find(Solicitante solicitante)
         {
-            throw new System.NotImplementedException();
+            DbSet<DadosVacina> dadosVacinas = null;
+
+            var _solicitante = _context.Solicitantes;
+
+            foreach (var sol in _solicitante)
+            {
+                if (sol.CPF == solicitante.CPF)
+                {
+                    dadosVacinas = _context.DadosVacinas;
+                    return dadosVacinas;
+                }
+            }
+
+            return dadosVacinas;
         }
 
-        public void FindAll()
-        {
-            throw new System.NotImplementedException();
-        }
+        //public void FindAll()
+        //{
+        //    throw new System.NotFiniteNumberException();
+        //}
 
-        public void Save()
-        {
-            throw new System.NotImplementedException();
-        }
+        //public void Save()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
-        public void Update(int id)
-        {
-            throw new System.NotImplementedException();
-        }
+        //public void Update(int id)
+        //{
+        //    throw new System.NotImplementedException();
+        //}
     }
 }

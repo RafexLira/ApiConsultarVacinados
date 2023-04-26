@@ -1,11 +1,13 @@
-﻿namespace ApiConsultarVacinas.Repositories
+﻿using ApiConsultarVacinas.Model;
+
+namespace ApiConsultarVacinas.Repositories
 {
     public interface ISolicitanteRepository
     {
-        void Save();
+        void Add(Solicitante solicitante);
+        bool SolicitanteExist(string cpf);
         void Delete(int id);
-        void Find(int id);
-        void FindAll();
+        string FindCpf(string cpf);       
         void Update(int id);
     }
 }

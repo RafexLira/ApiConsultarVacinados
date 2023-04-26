@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiConsultarVacinas.Migrations
 {
     [DbContext(typeof(VacinaContext))]
-    [Migration("20230421153306_NovaTabela")]
-    partial class NovaTabela
+    [Migration("20230426195022_iniciando_tabelas")]
+    partial class iniciando_tabelas
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,8 +73,8 @@ namespace ApiConsultarVacinas.Migrations
 
             modelBuilder.Entity("ApiConsultarVacinas.Model.DadosVacina", b =>
                 {
-                    b.HasOne("ApiConsultarVacinas.Model.Solicitante", "Solicitante")
-                        .WithMany()
+                    b.HasOne("ApiConsultarVacinas.Model.Solicitante", null)
+                        .WithMany("DadosVacina")
                         .HasForeignKey("SolicitanteId");
                 });
 #pragma warning restore 612, 618

@@ -4,7 +4,6 @@ namespace ApiConsultarVacinas.Response
 {
     public class CampanhaVacinaResponse
     {
-        public int Id { get; set; }
         public string PacienteId { get; set; }            
         public string HitId { get; set; }
         public string DataSolicitacao { get; set; }

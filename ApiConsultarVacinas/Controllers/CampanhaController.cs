@@ -1,9 +1,7 @@
-﻿using ApiConsultarVacinas.JsonResponse;
-using ApiConsultarVacinas.Model;
+﻿using ApiConsultarVacinas.Model;
 using ApiConsultarVacinas.Request;
 using ApiConsultarVacinas.Response;
 using ApiConsultarVacinas.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -35,18 +33,6 @@ namespace ApiConsultarVacinas.Controllers
         }
 
         [HttpPost]
-        [Route("searchM")]
-        public async Task<List<Scroll>> SearchM([FromBody] CampanhaVacinaRequest request)
-        {
-            var solicitante = new Solicitante()
-            {
-                Nome = request.Nome,
-                CPF = request.Cpf
-            };
-            return await _apiService.SearchM(solicitante);
-        }
-
-        [HttpPost]
         [Route("scroll")]
         public async Task<List<Scroll>> SearchScroll([FromBody] CampanhaVacinaRequest request)
         {
@@ -55,7 +41,7 @@ namespace ApiConsultarVacinas.Controllers
                 Nome = request.Nome,
                 CPF = request.Cpf
             };
-            return await _apiService.SearchScroll(request.ScrollId, solicitante);
+            return await _apiService.SearchScroll(solicitante);
         }
 
         [HttpPost]

@@ -1,8 +1,5 @@
 ﻿using ApiConsultarVacinas.Context;
 using ApiConsultarVacinas.Model;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace ApiConsultarVacinas.Repositories
 {
